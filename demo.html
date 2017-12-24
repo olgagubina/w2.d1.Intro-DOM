@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DOM Exercises</title>
+</head>
+<body>
+
+<!-- Exercise 1 -->
+    <div id="button-list"></div>
+    <script>
+        var clickMeButton = document.createElement('button');
+        var text = document.createTextNode ("Click me!")
+        clickMeButton.appendChild(text);
+        document.getElementById('button-list').appendChild(clickMeButton);
+    </script>
+
+<!-- Exercise 2 -->
+    <p id="paragraph" onmouseover="overPar()" onmouseout="returnPar()">Here's the first text before you hovered over it with the mouse.</p>
+    <script>
+        var overPar = function() {
+            document.getElementById("paragraph").innerHTML = "You've hovered over the text, it's changed, isn't it?";
+        }
+        var returnPar = function() {
+            document.getElementById("paragraph").innerHTML = "Here's the first text before you hovered over it with the mouse.";
+        }
+    </script>
+
+<!-- Exercise 3 -->
+    <ul id="list-obj" onclick="addItem()"> 
+        <li>A list item</li>
+    </ul> 
+    <script>
+         var addItem = function() {
+            var newItem = document.createElement("li");
+            var newItemText = document.createTextNode("Another list item");
+            newItem.appendChild(newItemText);
+            document.getElementById("list-obj").appendChild(newItem);
+        }
+    </script>
+
+<!-- Exercise 4 -->
+     <style>
+        .reddemo {
+            color: red;
+        }
+    </style>
+     <p id="p1" name="myfavep" data-info="I'm a paragraph"> Hello World</p>
+    <script>
+        var para = document.getElementById('p1')
+        var attr = document.createAttribute("class");
+        attr.value = "reddemo";
+        para.attributes.setNamedItem(attr);
+    </script>
+
+<!-- Exercise 5 -->
+    <a id="anch">Elevation's Website</a>
+    <script>
+        var anch = document.getElementById('anch');
+        var attr = document.createAttribute('href');
+        attr.value = 'www.elevationacademy.co';
+        anch.attributes.setNamedItem(attr);
+    </script>
+
+<!-- INDIVIDUAL EXERSICE -->
+    <p id="change-text">Here's the first text before you hovered over it with the mouse.</p>
+    <button id="change-button" onclick="switchText()">Change</button>
+    <script>
+        var switchText = function() {
+            if(document.getElementById("change-text").innerHTML=="Here's the first text before you hovered over it with the mouse.") {
+            document.getElementById("change-text").innerHTML = "You've hovered over the text, it's changed, isn't it?";
+            } else {
+            document.getElementById("change-text").innerHTML = "Here's the first text before you hovered over it with the mouse.";
+            }
+        }
+    </script>
+<!-- SIGN UP EXERCISE -->
+    <br> <br>
+    <form>
+        Username:
+        <input id="Username" type="text" placeholder="Your Name">
+        <br> Email:
+        <input type="e-mail" placeholder="yourname@email.com">
+        <br> Password:
+        <input id="Pass" type="password">
+        <br> Repeat password:
+        <input id="PassRep" type="password">
+        <br> Phone Number:
+        <input id="phoneNumb" type="number">
+        <br> Country:
+        <input id="rightCountry" type="text">
+        <br><br>
+        <div id="warning-text"></div>
+        <br><button type="button" onclick="validForm()">Submit</button> 
+    </form>
+    <script>
+    function validForm(){
+        document.getElementById("warning-text").innerHTML = "";
+        document.getElementById("warning-text").style.color = "red";
+        if (document.getElementById("Username").value.length<5) {
+            document.getElementById("warning-text").innerHTML = "The supplied username is too short, try again using 5 or more characters <br>";
+        } 
+
+        if (document.getElementById("Pass").value.length<6) {
+            document.getElementById("warning-text").innerHTML += "The supplied password is too short, try again using 6 or more characters <br>";
+        }
+
+        if (document.getElementById("PassRep").value !== document.getElementById("Pass").value) {
+            document.getElementById("warning-text").innerHTML += "Make sure that you repeat the password right <br>";
+        }
+
+        if (document.getElementById("rightCountry").value !== "USA" && document.getElementById("rightCountry").value!== "Israel") {
+            document.getElementById("warning-text").innerHTML += "You can put only USA or Israel <br>";
+        }
+
+        if (document.getElementById("phoneNumb").value.length>15) {
+            document.getElementById("warning-text").innerHTML += "The phone number should be shorter than 15 characters <br>";
+        }
+
+        if (document.getElementById("warning-text").innerHTML === ""){
+            document.getElementById("warning-text").style.color = "green";
+            document.getElementById("warning-text").innerHTML = "Hey, " + Username.value + "! Great job!";
+        }
+    }
+    </script>
+
+</body>
+</html>
